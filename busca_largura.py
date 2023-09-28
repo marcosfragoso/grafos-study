@@ -2,7 +2,6 @@ import networkx as nx
 from utils.networkx_util import draw_graph
 from collections import deque
 
-
 filename1 = "s-u-cy-sc-p-06.graphml"
 
 def bfs(g, r):
@@ -10,27 +9,28 @@ def bfs(g, r):
     Q = deque()
     i += 1
     painted = [r]
-    l = {r: 0} # Vértice inicial com nível 0
-    t = {r: i} # Vértice inicial com tempo i = 1
+    l = {r: 0}
+    t = {r: i}
     Q.append(r)  # Fila: adiciona a direita
-    p = [] # Registro de ordem de visita
-
-    while Q: # Loop enquanto a fila não estiver vazia
+    p = []
+    new_p = []
+    ## Edite o trecho a seguir para completar a implementação
+    while Q:
         x = Q[0]  # Fila: elemento da frente
         not_painted = [v for v in g.neighbors(x) if v not in painted]
-        
-        if not_painted: # Verificando se existe vizinhos não visitados
-            v = not_painted[0] # Pegando o primeiro vértice não visitado
-            i += 1 # Incrementando o tempo da visita
-            painted.append(v) # Visitando o vértice não visitado
-            l[v] = l[x] + 1 # Definindo o nível do vértice v
-            t[v] = i # Definindo o tempo de visita do vértice v
-            Q.append(v) # Adicionando v à fila
-            p.append(v) # Adicionando v no registro de ordens de visita
+        if not_painted:
+            v = not_painted[0]
+            i += 1
+            painted.append(v)
+            l[v] = l[x] + 1
+            t[v] = i
+            p.append(v)
+            Q.append(v)
+            new_p.append((x, v))
         else:
-            Q.popleft()  # Removendo o vértice da fila quando não tem mais vizinhos a ser visitado.
+            Q.popleft()
 
-    return p, l, t
+    return new_p, l, t
 
 G1 = nx.read_graphml(filename1)
 r = 'n0'
