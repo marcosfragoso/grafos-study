@@ -3,13 +3,13 @@ import matplotlib.pyplot as plt
 from utils.networkx_util import draw_graph
 
 
-def minimum_cost(C):
-    if C is None: return None
-    if not isinstance(C, list): return None
-    if coord_repetidas(C): return None
-    if not_tuplas(C): return None
+def minimum_cost(coordinates):
+    if coordinates is None: return None
+    if not isinstance(coordinates, list): return None
+    if coord_repetidas(coordinates): return None
+    if not_tuplas(coordinates): return None
 
-    grafo = cria_grafo(C)
+    grafo = cria_grafo(coordinates)
     if grafo is None: return None
     
     arvore_geradora = nx.minimum_spanning_tree(grafo, weight='dist')
@@ -18,7 +18,7 @@ def minimum_cost(C):
         custo_min += edge[2]['dist']
     return grafo, custo_min
 
-
+#
 def cria_grafo(c):
     G = nx.MultiGraph()
     for node in c:
