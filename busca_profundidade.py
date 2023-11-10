@@ -36,11 +36,3 @@ def dfs(g, r):
           t[x] = i
           S.popleft()
     return new_p, f, t
-
-
-G2 = nx.read_graphml(filename2)
-r = 'n0'
-p2,f2,t2 = dfs(G2,r)
-print(f"Função predecessor: {p2}")
-print(f"Função tempo de adição na árvore: {f2}")
-print(f"Função tempo de remoção da pilha: {t2}")

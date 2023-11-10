@@ -31,20 +31,3 @@ def bfs(g, r):
             Q.popleft()
 
     return new_p, l, t
-
-G1 = nx.read_graphml(filename1)
-r = 'n0'
-#p1,l1,t1 = bfs(G1,r)
-#print(f"Função predecessor: {p1}")
-#print(f"Função nível: {l1}")
-#print(f"Função tempo: {t1}")
-#not_edges_p1 = [e for e in G1.edges if (e[0],e[1]) not in p1 and (e[1],e[0]) not in p1]
-
-'''draw_graph(G1,title=f"Árvore BFS com raiz {r}",
-           eset=[p1,not_edges_p1],
-           esetcolor=["red","lightgray"],
-           esetlabel=["Arestas da árvore","Arestas da co-árvore"])
-           '''
-
-#print(G1.nodes())
-#bfs(G1, r)
